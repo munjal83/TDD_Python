@@ -36,9 +36,10 @@ class NewVisitorTest(unittest.TestCase): #1
 		inputbox.send_keys(Keys.ENTER)
 
 		table = self.browser.find_element_by_id('id_list_table')
-		rows = table.find_element_by_tag_name('tr')
+		rows = table.find_elements_by_tag_name('tr')
 		self.assertTrue(
-			any(row.text == '1. learn TDD with python' for row in rows)	
+			any(row.text == '1. learn TDD with python' for row in rows),
+			"New to-do item did not appear in table"	
 			)
 
 		# There is still a text box inviting him to add another item.
